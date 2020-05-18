@@ -1,0 +1,17 @@
+{
+  "name": "ourskribbl",
+  "version": "1.0.0",
+  "description": "An attempt to clone skribbl.io",
+  "scripts": {
+    "start": "webpack && node src/server/server.js"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}

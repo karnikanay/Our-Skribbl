@@ -70,13 +70,13 @@ body {
 }
 
 .lobbyArea {
-  width: 24%;
+  flex: 0 1 250px;
   height: 100%;
   margin: 0;
 }
 
 .canvasArea {
-  width: 52%;
+  flex: 0 0 810px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -110,8 +110,8 @@ body {
 }
 
 .chatArea {
-  width: 24%;
-  height: 100%;
+  flex: 1 0 150px;
+  height: 806px;
 }
 
 .messages {

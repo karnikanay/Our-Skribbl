@@ -1,10 +1,88 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Our Skribbl</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="bundle.js"></script>
   </head>
   <body>
-    <script src="bundle.js"></script>
+    <div class="header">
+      <h1>Skribbl Clone</h1>
+    </div>
+    <div class="container">
+      <div class="lobbyArea">
+        <div class="leaderboard">
+          <div class="person">
+            <img class="profilePic" width="64" height="64" />
+            <div class="personDetails">
+              <div class="personName">
+                <p>Lion</p>
+              </div>
+              <div class="personScore">
+                <div class="personPoints"><p>1489</p></div>
+                <div class="personRank">
+                  <p>#3</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="person">
+            <img class="profilePic" width="64" height="64" />
+            <div class="personDetails">
+              <div class="personName">
+                <p>Dog</p>
+              </div>
+              <div class="personScore">
+                <div class="personPoints"><p>2433</p></div>
+                <div class="personRank">
+                  <p>#2</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="person">
+            <img class="profilePic" width="64" height="64" />
+            <div class="personDetails">
+              <div class="personName">
+                <p>Monkey</p>
+              </div>
+              <div class="personScore">
+                <div class="personPoints"><p>3211</p></div>
+                <div class="personRank">
+                  <p>#1</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="canvasArea">
+        <div class="canvas">
+          <canvas id="board" width="500" height="500"> </canvas>
+        </div>
+        <div class="toolBox">
+          tools here
+        </div>
+      </div>
+      <div class="chatArea">
+        <div class="messages">
+          <div class="message">
+            <div class="msgContent">
+              <p><b>Anay:</b> Hey this is a message.</p>
+            </div>
+          </div>
+          <div class="message">
+            <div class="msgContent">
+              <p><b>Adhyyan:</b> Hey this is also a message.</p>
+            </div>
+          </div>
+        </div>
+        <div class="enter-message">
+          <form>
+            <input type="text" placeholder="Enter answer" />
+          </form>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
 

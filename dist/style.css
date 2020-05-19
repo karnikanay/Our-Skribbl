@@ -1,0 +1,132 @@
+html,
+body {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.container > div {
+  margin: 0 5px;
+}
+
+.person {
+  display: flex;
+  margin-bottom: 8px;
+  flex-direction: row;
+  border: solid;
+}
+
+.personDetails {
+  margin: 0px 8px;
+  width: 80%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.personName {
+  height: 50%;
+  margin-top: 8px;
+  border-bottom: solid 1px;
+}
+
+.personScore {
+  height: 50%;
+  margin-bottom: 2px;
+  margin-top: 5px;
+  display: flex;
+}
+
+.personPoints {
+  color: green;
+}
+
+.personRank {
+  color: blue;
+}
+
+.personScore > div > p {
+  margin: 0;
+}
+
+.personName > p {
+  margin: 0;
+}
+
+.personPoints {
+  width: 50%;
+}
+
+.personRank {
+  width: 50%;
+}
+
+.header {
+  height: 10%;
+}
+
+.lobbyArea {
+  width: 24%;
+  height: 100%;
+  margin: 0;
+}
+
+.canvasArea {
+  width: 52%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.canvas {
+  width: 100%;
+  border: solid;
+}
+
+.toolBox {
+  width: 100%;
+  height: 75px;
+  border: solid;
+}
+
+.chatArea {
+  width: 24%;
+  height: 100%;
+}
+
+.messages {
+  display: flex;
+  margin-bottom: 3px;
+  flex-direction: column;
+  border: solid;
+  height: 75%;
+}
+
+.message {
+  display: flex;
+  flex-direction: row;
+  margin: 3px 3px;
+}
+
+.message > div {
+  margin: 5px 5px;
+}
+
+.message > p {
+  margin: 0 0;
+}
+
+.enter-message {
+  display: flex;
+  margin-bottom: 8px;
+  flex-direction: row;
+  border: solid;
+}
+
+.enter-message > form > input {
+  width: 100%;
+}

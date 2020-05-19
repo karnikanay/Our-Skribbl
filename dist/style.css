@@ -76,25 +76,73 @@ body {
 }
 
 .canvasArea {
-  flex: 0 0 810px;
+  flex: 0 0 800px;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.canvas {
-  width: 100%;
+canvas {
   border: solid;
+  broder-width: thin;
   margin-bottom: 3px;
 }
 
 .toolBox {
-  width: 100%;
+  display: flex;
+  flex-direction: row;
   border: solid;
 }
 
+#tools {
+  width: 86px;
+  height: 74px;
+  display: flex;
+  margin: 4px 0 4px 3px;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.tool {
+  border: solid 2px;
+  width: 32px;
+  height: 32px;
+  margin: 0.5px 1px;
+  background-color: gray;
+}
+
+#brushes-small {
+  height: 74px;
+  width: 86px;
+  display: flex;
+  margin: 4px 0 4px 0;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+#brushes-small > svg {
+  border: solid 2px;
+  margin: 0.5px 1px;
+}
+
+#brushes-large {
+  height: 74px;
+  display: flex;
+  margin: 6px 4px 4px 0;
+  flex-direction: row;
+}
+
+#brushes-large > svg {
+  border: solid 2px;
+  margin: 0.5px 1.5px;
+}
+
+.tool > p {
+  margin: 6px 3px 3px 10px;
+  color: white;
+}
+
 #colorPalette {
-  width: 100%;
   height: 74px;
   margin: 4px 4px;
   display: flex;

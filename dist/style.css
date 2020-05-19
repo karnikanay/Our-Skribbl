@@ -85,7 +85,7 @@ body {
 .canvas {
   width: 100%;
   border: solid;
-  margin: 3px 0px;
+  margin-bottom: 3px;
 }
 
 .toolBox {

@@ -18,6 +18,9 @@ function initBrushes() {
   var brushesSmall = document.getElementById('brushes-small');
   var brushesLarge = document.getElementById('brushes-large');
 
+  var smallCount = 0;
+  var largeCount = 0;
+
   for(var id = 0; id < BRUSH_SIZES.length; id++) {
     var newBrush = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     var containerSize = BRUSH_SIZES[id] < 16 ? 32 : 64;
@@ -37,11 +40,16 @@ function initBrushes() {
 
     if(BRUSH_SIZES[id] < 16) {
       brushesSmall.appendChild(newBrush);
+      smallCount++;
     }
     else {
       brushesLarge.appendChild(newBrush);
+      largeCount++;
     }
   }
+
+  brushesSmall.style.width = (38*(smallCount/2 + smallCount%2) + 5) + "px";
+  brushesLarge.style.width = (75*(largeCount) + 5) + "px";
 }
 
 initColors();

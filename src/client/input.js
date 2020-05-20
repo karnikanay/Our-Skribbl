@@ -12,12 +12,32 @@ var brushTool = document.getElementById('brush-tool');
 var clearTool = document.getElementById('clear-tool');
 var eraserTool = document.getElementById('eraser-tool');
 
+function getColorBox(id) {
+  return document.querySelector(`[color-id="${id}"]`);
+}
+
+function getBrushBox(id) {
+  return document.querySelector(`[brush-id="${id}"]`);
+}
+
 function handleColorChange() {
+  if(drawColor != undefined) {
+    getColorBox(drawColor).classList.remove("selected");
+  }
+
   drawColor = this;
+
+  getColorBox(drawColor).classList.add("selected");
 }
 
 function handleBrushChange() {
+  if(brushSize != undefined) {
+    getBrushBox(brushSize).classList.remove("selected");
+  }
+
   brushSize = this;
+
+  getBrushBox(brushSize).classList.add("selected");
 }
 
 function switchToBrush() {
@@ -59,6 +79,9 @@ export function startCapturingInput() {
   fillTool.addEventListener('click', switchToBucket);
   clearTool.addEventListener('click', clearScreen);
   eraserTool.addEventListener('click', switchToEraser);
+
+  brushOff();
+  bucketOff();
 }
 
 export function stopCapturingOutput() {

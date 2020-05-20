@@ -3,7 +3,7 @@ import { startCapturingInput, brushOn, brushOff, bucketOn, bucketOff } from './i
 
 function initColors() {
   var colorPalette = document.getElementById('colorPalette');
-  colorPalette.style.width = (38*(COLOR_PALETTE.length/2 + COLOR_PALETTE.length%2) + 10) + "px";
+  colorPalette.style.width = (40*(COLOR_PALETTE.length/2 + COLOR_PALETTE.length%2) + 10) + "px";
 
   for(var id = 0; id < COLOR_PALETTE.length; id++) {
     var newColor = document.createElement("div");
@@ -23,7 +23,7 @@ function initBrushes() {
 
   for(var id = 0; id < BRUSH_SIZES.length; id++) {
     var newBrush = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    var containerSize = BRUSH_SIZES[id] < 16 ? 32 : 64;
+    var containerSize = BRUSH_SIZES[id] < 16 ? 32 : 72;
 
     newBrush.setAttribute('width', containerSize);
     newBrush.setAttribute('height', containerSize);
@@ -49,7 +49,7 @@ function initBrushes() {
   }
 
   brushesSmall.style.width = (38*(smallCount/2 + smallCount%2) + 5) + "px";
-  brushesLarge.style.width = (75*(largeCount) + 5) + "px";
+  brushesLarge.style.width = (80*(largeCount) + 5) + "px";
 }
 
 initColors();

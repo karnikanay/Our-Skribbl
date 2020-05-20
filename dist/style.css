@@ -84,22 +84,22 @@ body {
 
 canvas {
   border: solid;
-  broder-width: thin;
+  border-width: thin;
   margin-bottom: 3px;
 }
 
 .toolBox {
   display: flex;
   flex-direction: row;
-  border: solid;
+  border: solid thin;
 }
 
 #tools {
   width: 86px;
-  height: 74px;
+  height: 80px;
   display: flex;
   margin: 4px 0 4px 3px;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
 }
 
@@ -107,12 +107,12 @@ canvas {
   border: solid 2px;
   width: 32px;
   height: 32px;
-  margin: 0.5px 1px;
-  background-color: gray;
+  margin: 2px 0px;
+  background-color: #FCBA03;
 }
 
 #brushes-small {
-  height: 74px;
+  height: 80px;
   width: 86px;
   display: flex;
   margin: 4px 0 4px 0;
@@ -122,28 +122,28 @@ canvas {
 
 #brushes-small > svg {
   border: solid 2px;
-  margin: 0.5px 1px;
+  margin: 2px 1px;
 }
 
 #brushes-large {
-  height: 74px;
+  height: 80px;
   display: flex;
-  margin: 6px 4px 4px 0;
+  margin: 4px 0px 4px 0px;
   flex-direction: row;
 }
 
 #brushes-large > svg {
   border: solid 2px;
-  margin: 0.5px 1.5px;
+  margin: 2px 4px;
 }
 
 .tool > p {
   margin: 6px 3px 3px 10px;
-  color: white;
+  color: #7703fc;
 }
 
 #colorPalette {
-  height: 74px;
+  height: 80px;
   margin: 4px 4px;
   display: flex;
   flex-direction: column;
@@ -154,7 +154,7 @@ canvas {
   border: solid 2px;
   width: 32px;
   height: 32px;
-  margin: 0.5px 0px;
+  margin: 2px 0px;
 }
 
 .chatArea {
@@ -194,3 +194,8 @@ canvas {
 .enter-message > form > input {
   width: 100%;
 }
+
+.selected {
+  outline: solid 2px;
+}
+

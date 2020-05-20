@@ -1,27 +1,84 @@
-import { COLOR_PALETTE } from '../shared/constants'
+import { COLOR_PALETTE, BRUSH_SIZES } from '../shared/constants'
 
 var canvas = document.getElementById('board');
 var isDrawing = false;
 var curTool, drawColor, brushSize;
+var brushMode;
 var curPos = { x: 0, y: 0 };
 var lastPos = curPos;
+
+var fillTool = document.getElementById('fill-tool');
+var brushTool = document.getElementById('brush-tool');
+var clearTool = document.getElementById('clear-tool');
+var eraserTool = document.getElementById('eraser-tool');
+
+function handleColorChange() {
+  drawColor = this;
+}
+
+function handleBrushChange() {
+  brushSize = this;
+}
+
+function switchToBrush() {
+  brushOn();
+  bucketOff();
+  brushMode = 1;
+}
+
+function switchToEraser() {
+  brushOn();
+  bucketOff();
+  brushMode = 0;
+}
+
+function switchToBucket() {
+  brushOff();
+  bucketOn();
+}
+
+function clearScreen() {
+  console.log('cleared the canvas');
+}
 
 export function startCapturingInput() {
   // Add event listener for each color
   for(var id = 0; id < COLOR_PALETTE.length; id++) {
     var color = document.querySelector(`[color-id="${id}"]`);
-    color.addEventListener('click', function() {
-      drawColor = this;
-    }.bind(id));
+    color.addEventListener('click', handleColorChange.bind(id));
   }
+
+  // Add event listener for each brush size
+  for(var id = 0; id < BRUSH_SIZES.length; id++) {
+    var brushSizeElem = document.querySelector(`[brush-id="${id}"]`);
+    brushSizeElem.addEventListener('click', handleBrushChange.bind(id));
+  }
+
+  // Add event listeners for tools
+  brushTool.addEventListener('click', switchToBrush);
+  fillTool.addEventListener('click', switchToBucket);
+  clearTool.addEventListener('click', clearScreen);
+  eraserTool.addEventListener('click', switchToEraser);
 }
 
 export function stopCapturingOutput() {
   // Remove event listener for each color
   for(var id = 0; id < COLOR_PALETTE.length; id++) {
     var color = document.querySelector(`[color-id="${id}"]`);
-    color.removeEventListener('click');
+    color.removeEventListener('click', handleColorChange);
   }
+
+  // Remove event listener for each brush size
+  for(var id = 0; id < BRUSH_SIZES.length; id++) {
+    var brushSizeElem = document.querySelector(`[brush-id="${id}"]`);
+    brushSizeElem.removeEventListener('click', handleBrushChange);
+  }
+
+  // Remove event listeners for tools
+  brushTool.removeEventListener('click', switchToBrush);
+  eraserTool.removeEventListener('click', switchToEraser);
+  clearTool.removeEventListener('click', clearScreen);
+  fillTool.removeEventListener('click', switchToBucket);
 }
 
 export function brushOn() {
@@ -31,9 +88,9 @@ export function brushOn() {
 }
 
 export function brushOff() {
-  window.removeEventListener('mousedown');
-  window.removeEventListener('mouseup');
-  canvas.removeEventListener('mousemove');
+  window.removeEventListener('mousedown', brushDown);
+  window.removeEventListener('mouseup', brushUp);
+  canvas.removeEventListener('mousemove', brushMove);
 }
 
 export function bucketOn() {
@@ -41,7 +98,7 @@ export function bucketOn() {
 }
 
 export function bucketOff() {
-  canvas.removeEventListener('click');
+  canvas.removeEventListener('click', bucketClick);
 }
 
 function brushDown() {

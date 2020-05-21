@@ -204,7 +204,9 @@ canvas {
   margin: 4px 4px;
 }
 
-.selected {
+.selected,
+.toolBox > div > div:hover,
+.toolBox > div > svg:hover {
   outline: solid 2px;
 }
 

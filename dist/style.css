@@ -17,7 +17,7 @@ body {
   display: flex;
   margin-bottom: 8px;
   flex-direction: row;
-  border: solid;
+  border: solid thin;
 }
 
 .personDetails {
@@ -66,7 +66,7 @@ body {
 }
 
 .header {
-  height: 10%;
+  height: 50px;
 }
 
 .lobbyArea {
@@ -92,6 +92,8 @@ canvas {
   display: flex;
   flex-direction: row;
   border: solid thin;
+  align-items: center;
+  justify-content: center;
 }
 
 #tools {
@@ -159,14 +161,14 @@ canvas {
 
 .chatArea {
   flex: 1 0 150px;
-  height: 806px;
+  height: 800px;
 }
 
 .messages {
   display: flex;
   margin-bottom: 3px;
   flex-direction: column;
-  border: solid;
+  border: solid thin;
   height: 75%;
 }
 
@@ -188,11 +190,18 @@ canvas {
   display: flex;
   margin-bottom: 8px;
   flex-direction: row;
-  border: solid;
+  border: solid thin;
+  width: 100%;
+}
+
+.enter-message > form {
+  width: 100%;
 }
 
 .enter-message > form > input {
-  width: 100%;
+  width: 90%;
+  border: none;
+  margin: 4px 4px;
 }
 
 .selected {

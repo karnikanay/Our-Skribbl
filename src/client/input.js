@@ -12,6 +12,8 @@ var brushTool = document.getElementById('brush-tool');
 var clearTool = document.getElementById('clear-tool');
 var eraserTool = document.getElementById('eraser-tool');
 
+var disableCurrentTool = function() { };
+
 function getColorBox(id) {
   return document.querySelector(`[color-id="${id}"]`);
 }
@@ -41,20 +43,41 @@ function handleBrushChange() {
 }
 
 function switchToBrush() {
+  disableCurrentTool();
+  brushTool.classList.add("selected");
+
   brushOn();
   bucketOff();
   brushMode = 1;
+
+  disableCurrentTool = function() {
+    brushTool.classList.remove("selected");
+  }
 }
 
 function switchToEraser() {
+  disableCurrentTool();
+  eraserTool.classList.add("selected");
+
   brushOn();
   bucketOff();
   brushMode = 0;
+
+  disableCurrentTool = function() {
+    eraserTool.classList.remove("selected");
+  }
 }
 
 function switchToBucket() {
+  disableCurrentTool();
+  fillTool.classList.add("selected");
+
   brushOff();
   bucketOn();
+
+  disableCurrentTool = function() {
+    fillTool.classList.remove("selected");
+  }
 }
 
 function clearScreen() {

@@ -10,8 +10,7 @@ export function initCanvas(){
 }
 
 export function emptyScreen(){
-	ctx.fillStyle = "#FFFF0F";
-	console.log(ctx.width + " " + ctx.height);
+	ctx.fillStyle = COLOR_PALETTE[0];
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 

@@ -162,6 +162,9 @@ export function bucketOff() {
 }
   
 function brushDown(e) {
+  if(e.type == 'touchstart')
+    e = e.touches[0];
+
   isDrawing = true;
   updatePos(e);
 }
@@ -180,6 +183,11 @@ function updatePos(e) {
 }
 
 function brushMove(e) {
+  e.preventDefault();
+  
+  if(e.type == 'touchmove')
+    e = e.touches[0];
+
   if(isDrawing) {
     updatePos(e);
     console.log("brushMODe: " + brushMode);

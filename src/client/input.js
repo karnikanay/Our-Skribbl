@@ -134,6 +134,10 @@ export function brushOn() {
   window.addEventListener('mousedown', brushDown);
   window.addEventListener('mouseup', brushUp);
   window.addEventListener('mousemove', brushMove);
+
+  window.addEventListener('touchstart', brushDown);
+  window.addEventListener('touchend', brushUp);
+  window.addEventListener('touchmove', brushMove);
 }
 
 export function brushOff() {
@@ -141,6 +145,10 @@ export function brushOff() {
   window.removeEventListener('mousedown', brushDown);
   window.removeEventListener('mouseup', brushUp);
   window.removeEventListener('mousemove', brushMove);
+
+  window.removeEventListener('touchstart', brushDown);
+  window.removeEventListener('touchend', brushUp);
+  window.removeEventListener('touchmove', brushMove);
 }
 
 export function bucketOn() {

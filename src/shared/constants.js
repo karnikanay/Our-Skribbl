@@ -1,4 +1,10 @@
 module.exports = Object.freeze({
+
+  MSG_TYPES: { CONNECT: "connect",
+               BRUSH_STROKE: "brush_stroke",
+               CLEAR_CANVAS: "clear_canvas",
+               FILL_COLOR: "fill_color",
+               DISCONNECT: "disconnect" },
  
   BRUSH_SIZES: [ 2,
                  5,

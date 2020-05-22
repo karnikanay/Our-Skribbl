@@ -1,5 +1,6 @@
 import { COLOR_PALETTE, BRUSH_SIZES } from '../shared/constants'
-import { startCapturingInput, brushOn, brushOff, bucketOn, bucketOff } from './input'
+import { startCapturingInput, stopCapturingInput } from './input'
+import { connect } from './networking'
 
 function initColors() {
   var colorPalette = document.getElementById('colorPalette');
@@ -55,5 +56,5 @@ function initBrushes() {
 initColors();
 initBrushes();
 
-bucketOn();
 startCapturingInput();
+connect();

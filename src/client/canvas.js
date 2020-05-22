@@ -1,3 +1,5 @@
+import { COLOR_PALETTE, BRUSH_SIZES } from '../shared/constants'
+
 // Get DOM elements
 const canvas = document.getElementById('board');
 const ctx = canvas.getContext('2d');
@@ -19,8 +21,8 @@ export function fillColor() {
 
 export function brushStroke(pos1, pos2, brushRadius, color) {
   ctx.beginPath();
-  ctx.strokeStyle = color;
-  ctx.lineWidth = 2*brushRadius;
+  ctx.strokeStyle = COLOR_PALETTE[color];
+  ctx.lineWidth = 2*BRUSH_SIZES[brushRadius];
   ctx.moveTo(pos1.x, pos1.y);
   ctx.lineTo(pos2.x, pos2.y);
   ctx.stroke();

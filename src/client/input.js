@@ -1,5 +1,6 @@
 import { COLOR_PALETTE, BRUSH_SIZES } from '../shared/constants'
 import {strokeStart, strokeEnd, brushStroke, emptyScreen} from './canvas'
+import { sendBrushStroke, sendFill, sendClear } from './networking'
 
 var canvas = document.getElementById('board');
 var isDrawing = false;
@@ -84,6 +85,7 @@ function switchToBucket() {
 function clearScreen() {
   console.log('cleared the canvas');
   emptyScreen();
+  sendClear();
 }
 
 export function startCapturingInput() {
@@ -106,7 +108,7 @@ export function startCapturingInput() {
   eraserTool.addEventListener('click', switchToEraser);
 }
 
-export function stopCapturingOutput() {
+export function stopCapturingInput() {
   // Remove event listener for each color
   for(var id = 0; id < COLOR_PALETTE.length; id++) {
     var color = document.querySelector(`[color-id="${id}"]`);
@@ -180,13 +182,16 @@ function updatePos(e) {
 function brushMove(e) {
   if(isDrawing) {
     updatePos(e);
-    brushStroke(lastPos, curPos, BRUSH_SIZES[brushSize], (brushMode == 1) ? COLOR_PALETTE[drawColor] : "#FFF" );
+    console.log("brushMODe: " + brushMode);
+    brushStroke(lastPos, curPos, brushSize, brushMode*drawColor);
+    sendBrushStroke(lastPos, curPos, brushSize, brushMode*drawColor);
     console.log('made a stroke from x: ' + lastPos.x + ', y: ' + lastPos.y + ' to x: ' + curPos.x + ', y: ' + curPos.y);
   }
 }
 
 function bucketClick(e) {
   updatePos(e);
+  sendFill(curPos, drawColor);
   console.log('fill color at x: ' + curPos.x + ', y: ' + curPos.y);
 }
 

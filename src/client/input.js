@@ -104,9 +104,6 @@ export function startCapturingInput() {
   fillTool.addEventListener('click', switchToBucket);
   clearTool.addEventListener('click', clearScreen);
   eraserTool.addEventListener('click', switchToEraser);
-
-  brushOff();
-  bucketOff();
 }
 
 export function stopCapturingOutput() {
@@ -127,54 +124,55 @@ export function stopCapturingOutput() {
   eraserTool.removeEventListener('click', switchToEraser);
   clearTool.removeEventListener('click', clearScreen);
   fillTool.removeEventListener('click', switchToBucket);
+
+  brushOff();
+  bucketOff();
 }
 
 export function brushOn() {
   console.log("ENABLED BRUSH");
   window.addEventListener('mousedown', brushDown);
   window.addEventListener('mouseup', brushUp);
-  canvas.addEventListener('mousemove', brushMove);
+  window.addEventListener('mousemove', brushMove);
 }
 
 export function brushOff() {
   console.log("DISABLED BRUSH");
   window.removeEventListener('mousedown', brushDown);
   window.removeEventListener('mouseup', brushUp);
-  canvas.removeEventListener('mousemove', brushMove);
+  window.removeEventListener('mousemove', brushMove);
 }
 
 export function bucketOn() {
-  canvas.addEventListener('click', bucketClick);
+  window.addEventListener('click', bucketClick);
 }
 
 export function bucketOff() {
-  canvas.removeEventListener('click', bucketClick);
+  window.removeEventListener('click', bucketClick);
 }
   
-function brushDown() {
+function brushDown(e) {
   isDrawing = true;
-  lastPos = curPos;
-  strokeStart();
-  console.log("BRUSH DOWN");
+  updatePos(e);
 }
 
 function brushUp() {
   isDrawing = false;
-  strokeEnd();
 }
 
 function updatePos(e) {
   var offset = canvas.getBoundingClientRect();
 
-  lastPos = curPos;
+  lastPos = { x: curPos.x,
+              y: curPos.y };
   curPos.x = e.clientX - Math.round(offset.x);
   curPos.y = e.clientY - Math.round(offset.y);
-  brushStroke(curPos, 5, "lol");
 }
 
 function brushMove(e) {
   if(isDrawing) {
     updatePos(e);
+    brushStroke(lastPos, curPos, BRUSH_SIZES[brushSize], (brushMode == 1) ? COLOR_PALETTE[drawColor] : "#FFF" );
     console.log('made a stroke from x: ' + lastPos.x + ', y: ' + lastPos.y + ' to x: ' + curPos.x + ', y: ' + curPos.y);
   }
 }

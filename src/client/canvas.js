@@ -4,36 +4,26 @@ const ctx = canvas.getContext('2d');
 initCanvas();
 
 export function initCanvas(){
-	ctx.width = 500;
-	ctx.height = 500;
+  ctx.lineCap = "round";
 }
 
 export function emptyScreen(){
 	ctx.fillStyle = "#FFFF0F";
 	console.log(ctx.width + " " + ctx.height);
-	ctx.fillRect(0, 0, ctx.width-1, ctx.height-1);
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 export function fillColor() {
 
 }
 
-export function strokeStart(){
-
-}
-
-export function strokeEnd(){
-	ctx.beginPath();
-}
-
-
-export function brushStroke(pos, brushRadius, color) {
-	//ctx.color = color;
-	ctx.lineCap = "round";
-
-	ctx.lineTo(pos.x, pos.y);
-	ctx.stroke();
-	ctx.beginPath();
-	ctx.moveTo(pos.x, pos.y);
+export function brushStroke(pos1, pos2, brushRadius, color) {
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2*brushRadius;
+  ctx.moveTo(pos1.x, pos1.y);
+  ctx.lineTo(pos2.x, pos2.y);
+  ctx.stroke();
+  ctx.closePath();
 }
 

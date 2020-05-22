@@ -1,4 +1,5 @@
 import { COLOR_PALETTE, BRUSH_SIZES } from '../shared/constants'
+import {strokeStart, strokeEnd, brushStroke, emptyScreen} from './canvas'
 
 var canvas = document.getElementById('board');
 var isDrawing = false;
@@ -82,6 +83,7 @@ function switchToBucket() {
 
 function clearScreen() {
   console.log('cleared the canvas');
+  emptyScreen();
 }
 
 export function startCapturingInput() {
@@ -128,12 +130,14 @@ export function stopCapturingOutput() {
 }
 
 export function brushOn() {
+  console.log("ENABLED BRUSH");
   window.addEventListener('mousedown', brushDown);
   window.addEventListener('mouseup', brushUp);
   canvas.addEventListener('mousemove', brushMove);
 }
 
 export function brushOff() {
+  console.log("DISABLED BRUSH");
   window.removeEventListener('mousedown', brushDown);
   window.removeEventListener('mouseup', brushUp);
   canvas.removeEventListener('mousemove', brushMove);
@@ -146,14 +150,17 @@ export function bucketOn() {
 export function bucketOff() {
   canvas.removeEventListener('click', bucketClick);
 }
-
+  
 function brushDown() {
   isDrawing = true;
   lastPos = curPos;
+  strokeStart();
+  console.log("BRUSH DOWN");
 }
 
 function brushUp() {
   isDrawing = false;
+  strokeEnd();
 }
 
 function updatePos(e) {
@@ -162,6 +169,7 @@ function updatePos(e) {
   lastPos = curPos;
   curPos.x = e.clientX - Math.round(offset.x);
   curPos.y = e.clientY - Math.round(offset.y);
+  brushStroke(curPos, 5, "lol");
 }
 
 function brushMove(e) {

@@ -1,33 +1,39 @@
 // Get DOM elements
 const canvas = document.getElementById('board');
-const context = canvas.getContext('2d');
+const ctx = canvas.getContext('2d');
+initCanvas();
 
-var brushRadius;
-var curPos, lastPos;
-var drawColor;
-var curTool;
+export function initCanvas(){
+	ctx.width = 500;
+	ctx.height = 500;
+}
 
-export function setTool(newTool) {
+export function emptyScreen(){
+	ctx.fillStyle = "#FFFF0F";
+	console.log(ctx.width + " " + ctx.height);
+	ctx.fillRect(0, 0, ctx.width-1, ctx.height-1);
+}
+
+export function fillColor() {
 
 }
 
-export function setBrushSize(newBrushSize) {
+export function strokeStart(){
 
 }
 
-export function applyTool() {
-
+export function strokeEnd(){
+	ctx.beginPath();
 }
 
-export function setColor(newColor) {
 
-}
+export function brushStroke(pos, brushRadius, color) {
+	//ctx.color = color;
+	ctx.lineCap = "round";
 
-function fillColor() {
-
-}
-
-function brushStroke() {
-
+	ctx.lineTo(pos.x, pos.y);
+	ctx.stroke();
+	ctx.beginPath();
+	ctx.moveTo(pos.x, pos.y);
 }
 

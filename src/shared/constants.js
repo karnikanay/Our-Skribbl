@@ -13,7 +13,7 @@ module.exports = Object.freeze({
                  20,
                  30 ],
 
-  COLOR_PALETTE: ['#FFF',
+  COLOR_PALETTE: ['#FFFFFF',
                   '#C1C1C1', 
                   '#EF130B', 
                   '#FF7100', 
@@ -24,7 +24,7 @@ module.exports = Object.freeze({
                   '#A300BA', 
                   '#D37CAA', 
                   '#A0522D',
-                  '#000',
+                  '#000000',
                   '#4C4C4C', 
                   '#740B07', 
                   '#C23800', 

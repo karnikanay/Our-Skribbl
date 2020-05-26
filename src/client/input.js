@@ -1,5 +1,5 @@
 import { COLOR_PALETTE, BRUSH_SIZES } from '../shared/constants'
-import {strokeStart, strokeEnd, brushStroke, emptyScreen} from './canvas'
+import {brushStroke, emptyScreen, fillColor} from './canvas'
 import { sendBrushStroke, sendFill, sendClear } from './networking'
 
 var canvas = document.getElementById('board');
@@ -200,6 +200,7 @@ function brushMove(e) {
 function bucketClick(e) {
   updatePos(e);
   sendFill(curPos, drawColor);
+  fillColor(curPos, drawColor);
   console.log('fill color at x: ' + curPos.x + ', y: ' + curPos.y);
 }
 

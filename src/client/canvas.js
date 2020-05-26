@@ -33,7 +33,7 @@ export function fillColor(pos, color) {
   var tarColor = "0x" + (COLOR_PALETTE[color].slice(1, 7));
   tarColor = +tarColor;
   console.log('TAR COLOR: ' + tarColor)
-
+  if(curColor == tarColor) return;
   stack.push({x : pos.x, y : pos.y});
   while(stack.length > 0){
     var last = stack.pop();
@@ -49,9 +49,9 @@ export function fillColor(pos, color) {
         continue
 
       if( data[getXY(xx, yy) + 3] == 0 ||(
-          data[getXY(xx, yy) + 0] == (curColor&(0xFF0000)>>16) && 
-          data[getXY(xx, yy) + 1] == (curColor&(0x00FF00)>>8) && 
-          data[getXY(xx, yy) + 2] == (curColor&(0x0000FF))) ){
+          data[getXY(xx, yy) + 0] == ((curColor&(0xFF0000))>>16) && 
+          data[getXY(xx, yy) + 1] == ((curColor&(0x00FF00))>>8) && 
+          data[getXY(xx, yy) + 2] == (curColor&(0x0000FF)) )){
         
           data[getXY(xx, yy) + 2] = (tarColor&(0x0000FF));
           data[getXY(xx, yy) + 1] = (tarColor&(0x00FF00))>>8;
@@ -63,7 +63,9 @@ export function fillColor(pos, color) {
     }  
   }
   ctx.putImageData(imgData, 0, 0);
-  count = 0;
+  
+  console.log('DONE')
+
 }
 
 function getXY(x, y){

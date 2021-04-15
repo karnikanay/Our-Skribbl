@@ -1,6 +1,9 @@
 import { COLOR_PALETTE, BRUSH_SIZES } from '../shared/constants'
 import { startCapturingInput, stopCapturingInput } from './input'
 import { connect } from './networking'
+import React from "react"
+import ReactDOM from "react-dom"
+import Leaderboard from './leaderboard.js'
 
 function initColors() {
   var colorPalette = document.getElementById('colorPalette');
@@ -52,6 +55,8 @@ function initBrushes() {
   brushesSmall.style.width = (38*(smallCount/2 + smallCount%2) + 5) + "px";
   brushesLarge.style.width = (80*(largeCount) + 5) + "px";
 }
+
+ReactDOM.render(<Leaderboard />, document.getElementById("leaderboard"));
 
 initColors();
 initBrushes();

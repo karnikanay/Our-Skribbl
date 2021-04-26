@@ -170,20 +170,22 @@ canvas {
   flex-direction: column;
   border: solid thin;
   height: 75%;
+  padding-top: 2px;
+  overflow-y: scroll;
 }
 
 .message {
   display: flex;
   flex-direction: row;
-  margin: 3px 3px;
+  margin: 0px 3px;
 }
 
 .message > div {
-  margin: 5px 5px;
+  margin: 0px 5px;
 }
 
-.message > p {
-  margin: 0 0;
+.msgContent > p {
+  margin: 3px 3px;
 }
 
 .enter-message {

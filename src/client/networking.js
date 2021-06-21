@@ -42,20 +42,20 @@ function handleDisconnect() {
   console.log("disconnected from server");
 }
 
-function handleJoinFail() {
-  document.getElementById("form-notif").innerHTML = "Room not found in server.";
+function handleJoinFail(message) {
+  document.getElementById("form-notif").innerHTML = message;
 }
 
-function handleJoinSuccess() {
-  document.getElementById("form-notif").innerHTML = "Room joined successfully";
+function handleJoinSuccess(message) {
+  document.getElementById("form-notif").innerHTML = message;
 }
 
-function handleCreateFail() {
-  document.getElementById("form-notif").innerHTML = "Room could not be created.";
+function handleCreateFail(message) {
+  document.getElementById("form-notif").innerHTML = message;
 }
 
-function handleCreateSuccess() {
-  document.getElementById("form-notif").innerHTML = "Room created successfully.";
+function handleCreateSuccess(message) {
+  document.getElementById("form-notif").innerHTML = message;
 }
 
 export function sendBrushStroke(pos1, pos2, brushRadius, color) {

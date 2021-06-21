@@ -17,41 +17,40 @@ let rooms = {};
 
 io.on(Constants.MSG_TYPES.CONNECT, (socket) => {
   console.log(socket.id + " connected");
-  // Handle socket callbacks
-  socket.on(Constants.MSG_TYPES.FILL_COLOR, (data) => {
-    io.emit(Constants.MSG_TYPES.FILL_COLOR, data);
-  });
   
+  // Handle socket callbacks
   socket.on(Constants.MSG_TYPES.JOIN_ROOM, (roomName) => {
-    if(rooms[roomName]) {
+    if(socket.currentRoom) {
+      // Error: player already in a room
+      socket.emit(Constants.MSG_TYPES.JOIN_FAIL, "Can't join room. Already in a room.");
+    }
+    else if(rooms[roomName]) {
       rooms[roomName].addPlayer(socket);
-      socket.emit(Constants.MSG_TYPES.JOIN_SUCCESS);
+      socket.currentRoom = roomName;
+      socket.emit(Constants.MSG_TYPES.JOIN_SUCCESS, "Room joined successfully.");
     }
     else {
       // Error: no such room
       console.log(socket.id + " tried to join invalid room.");
-      socket.emit(Constants.MSG_TYPES.JOIN_FAIL);
+      socket.emit(Constants.MSG_TYPES.JOIN_FAIL, "Room not found in the server.");
     }
   });
 
   socket.on(Constants.MSG_TYPES.CREATE_ROOM, (roomName) => {
-    if(rooms[roomName]) {
+    if(socket.currentRoom) {
+      // Error: player already in a room
+      socket.emit(Constants.MSG_TYPES.CREATE_FAIL, "Can't create room. Already in a room.");
+    }
+    else if(rooms[roomName]) {
       // Error: room already exists
-      socket.emit(Constants.MSG_TYPES.CREATE_FAIL);
+      socket.emit(Constants.MSG_TYPES.CREATE_FAIL, "Can't create room. Room already exists.);
     }
     else {
       rooms[roomName] = new Room();
       rooms[roomName].addPlayer(socket);
-      socket.emit(Constants.MSG_TYPES.CREATE_SUCCESS);
+      socket.currentRoom = roomName;
+      socket.emit(Constants.MSG_TYPES.CREATE_SUCCESS, "Successfully created room.");
     }
-  });
-
-  socket.on(Constants.MSG_TYPES.CLEAR_CANVAS, () => {
-    io.emit(Constants.MSG_TYPES.CLEAR_CANVAS);
-  });
-  
-  socket.on(Constants.MSG_TYPES.BRUSH_STROKE, (data) => {
-    io.emit(Constants.MSG_TYPES.BRUSH_STROKE, data);
   });
 });
 

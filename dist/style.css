@@ -75,6 +75,19 @@ body {
   margin: 0;
 }
 
+#roomName {
+  width: 97%;
+  margin-bottom: 3px;
+}
+
+#joinRoomBtn {
+  width: 49.2%;
+}
+
+#createRoomBtn {
+  width: 49.2%;
+}
+
 .canvasArea {
   flex: 0 0 800px;
   height: 100%;

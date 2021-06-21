@@ -1,6 +1,12 @@
 module.exports = Object.freeze({
   MSG_TYPES: { 
     CONNECT: "connect",
+    JOIN_ROOM: "join_room",
+    JOIN_SUCCESS: "join_success",
+    JOIN_FAIL: "join_fail",
+    CREATE_ROOM: "create_room",
+    CREATE_SUCCESS: "create_success",
+    CREATE_FAIL: "create_fail",
     BRUSH_STROKE: "brush_stroke",
     CLEAR_CANVAS: "clear_canvas",
     FILL_COLOR: "fill_color",

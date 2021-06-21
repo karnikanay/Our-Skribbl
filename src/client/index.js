@@ -1,6 +1,6 @@
 import { COLOR_PALETTE, BRUSH_SIZES } from '../shared/constants'
 import { startCapturingInput, stopCapturingInput } from './input'
-import { connect } from './networking'
+import { connect, joinRoom, createRoom } from './networking'
 import React from "react"
 import ReactDOM from "react-dom"
 import Leaderboard from './leaderboard.js'
@@ -56,7 +56,27 @@ function initBrushes() {
   brushesLarge.style.width = (80*(largeCount) + 5) + "px";
 }
 
-ReactDOM.render(<Leaderboard />, document.getElementById("leaderboard"));
+var leaderDiv = document.getElementById("leaderboard");
+
+function toggleLeaderboard(toggleMode) {
+  if(toggleMode)
+    leaderDiv.style.visibility = "visible";
+  else
+    leaderDiv.style.visibility = "hidden";
+}
+
+document.getElementById("joinRoomBtn").addEventListener("click", (ev) => {
+  ev.preventDefault();
+  joinRoom(document.getElementById("roomName").value);
+});
+
+document.getElementById("createRoomBtn").addEventListener("click", (ev) => {
+  ev.preventDefault();
+  createRoom(document.getElementById("roomName").value);
+});
+
+ReactDOM.render(<Leaderboard />, leaderDiv);
+toggleLeaderboard(0);
 
 initColors();
 initBrushes();

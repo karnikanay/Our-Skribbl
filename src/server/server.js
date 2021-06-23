@@ -4,6 +4,7 @@ const port = 3000;
 const socketio = require('socket.io');
 const Constants = require('../shared/constants');
 const Room = require('./room.js');
+const { genThreeWords, getInitialHint, checkGuess } = require('./word.js');
 
 app.use(express.static('dist'));
 

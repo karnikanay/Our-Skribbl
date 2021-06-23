@@ -43,7 +43,7 @@ io.on(Constants.MSG_TYPES.CONNECT, (socket) => {
     }
     else if(rooms[roomName]) {
       // Error: room already exists
-      socket.emit(Constants.MSG_TYPES.CREATE_FAIL, "Can't create room. Room already exists.);
+      socket.emit(Constants.MSG_TYPES.CREATE_FAIL, "Can't create room. Room already exists.");
     }
     else {
       rooms[roomName] = new Room();

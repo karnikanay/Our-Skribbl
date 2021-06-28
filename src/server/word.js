@@ -28,12 +28,13 @@ function genThreeWords() {
 
 function getInitialHint(wordString) {
   // All characters except a hyphen must be replaced by an underscore
-  let hintString = "_".repeat(wordString.length);
-
-  for(let i = 0; i < wordString.length; i++)
-    if(wordString[i] == '-')
-      hintString[i] = '-';
-
+  let hintString = "";
+  for(let i = 0; i < wordString.length; i++) {
+    if(wordString.charAt(i) == '-')
+      hintString += '-';
+    else
+      hintString += '_';
+  }
   return hintString;
 }
 
